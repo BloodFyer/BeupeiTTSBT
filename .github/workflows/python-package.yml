@@ -1,0 +1,18 @@
+# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: 디스코드 알림봇
+
+on:
+  schedule: # UTC+9 기준 3시 실행
+    - cron:  "0 18 * * *"
+
+jobs:
+  message:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Discord Webhook Action
+      uses: tsickert/discord-webhook@v5.3.0
+      with:
+        webhook-url: ${{ secrets.https://discord.com/api/webhooks/1281858175997575246/QqmLFi_3ztZYbYaJpr5RfeNmZb2GRZnpryINlYnotX1-L77h0Ldokg01C6jeeVf9psAs }}
+        content: "보내고 싶은 텍스트"
