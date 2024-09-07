@@ -5,7 +5,7 @@ name: 디스코드 알림봇
 
 on:
   schedule: # UTC+9 기준 3시 실행
-    - cron:  "0 18 * * *"
+    - cron:  "15 6 * * *"
 
 jobs:
   message:
@@ -15,4 +15,4 @@ jobs:
       uses: tsickert/discord-webhook@v5.3.0
       with:
         webhook-url: ${{ secrets.https://discord.com/api/webhooks/1281858175997575246/QqmLFi_3ztZYbYaJpr5RfeNmZb2GRZnpryINlYnotX1-L77h0Ldokg01C6jeeVf9psAs }}
-        content: "보내고 싶은 텍스트"
+        content: "바보멍텅구리"
