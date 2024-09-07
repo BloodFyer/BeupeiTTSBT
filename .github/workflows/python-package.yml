@@ -1,18 +1,32 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: 디스코드 알림봇
+name: 3 o'clock auto play
 
 on:
   schedule: # UTC+9 기준 3시 실행
-    - cron:  "15 6 * * *"
+    - cron:  "5 7 * * *"
 
 jobs:
-  message:
+  build:
     runs-on: ubuntu-latest
+
+    timeout-minutes: 5
+
     steps:
-    - name: Discord Webhook Action
-      uses: tsickert/discord-webhook@v5.3.0
+    - uses: actions/checkout@v3
+    
+    - uses: actions/setup-node@v3
       with:
-        webhook-url: ${{ secrets.https://discord.com/api/webhooks/1281858175997575246/QqmLFi_3ztZYbYaJpr5RfeNmZb2GRZnpryINlYnotX1-L77h0Ldokg01C6jeeVf9psAs }}
-        content: "바보멍텅구리"
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: Setting .env
+      run: |
+        echo "BOT_TOKEN=${{ secrets.BOT_TOKEN }}" >> .env
+        echo "GUILD_ID=${{ secrets.GUILD_ID }}" >> .env
+        echo "VOICE_CHANNEL_ID=${{ secrets.VOICE_CHANNEL_ID }}" >> .env
+        echo "YOUTUBE_URL=${{ secrets.YOUTUBE_URL }}" >> .env
+        
+    - run: npm ci
+    - run: npm run start
