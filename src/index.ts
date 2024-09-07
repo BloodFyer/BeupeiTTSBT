@@ -36,16 +36,3 @@ client.once(Events.ClientReady, (c) => {
 
 client.login(BOT_TOKEN);
 
-
-
-
-
-
-
-
-
-// .env
-BOT_TOKEN="봇 토큰"
-GUILD_ID="디스코드 서버 ID"
-VOICE_CHANNEL_ID="음성 채널 ID"
-YOUTUBE_URL="유튜브 링크"
