@@ -5,7 +5,7 @@ name: 3 o'clock auto play
 
 on:
   schedule: # UTC+9 기준 3시 실행
-    - cron:  "5 7 * * *"
+    - cron:  "15 7 * * *"
 
 jobs:
   build:
